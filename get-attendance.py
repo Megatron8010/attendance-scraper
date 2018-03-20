@@ -45,10 +45,7 @@ view.click()
 time.sleep(10)
 
 soup = BeautifulSoup(browser.page_source, "html.parser")
-with open(r"C:\Users\rajsi\Desktop\test.txt","w") as oFile:
-    oFile.write(str(soup.prettify()))
-file = open("C:\\Users\\rajsi\\Desktop\\test.txt")
-soup = BeautifulSoup(file,"html.parser")
+
 tabledata = soup.find(id="ctl00xctl00xContentPanexContentPanexAttendenceColorxUltraWebGrid1_r_122")  #edit this to get your attendance
 rows = tabledata.findChildren('td')
 n=0
@@ -56,6 +53,5 @@ for row in rows:
     n= n+1
     if(n==19):
         print("YOur attendance is:  ",row.getText())
-file.close()        
-os.remove("C:\\Users\\rajsi\\Desktop\\test.txt")        
+
 browser.quit()    
